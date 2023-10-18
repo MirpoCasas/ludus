@@ -1,0 +1,50 @@
+.escritura{
+  padding: 75px 153px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  h1{
+    align-self: flex-start;
+    font-size: 84px;
+    font-weight: 400;
+    margin: 0;
+  }
+}
+
+.escritura_list{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 20px;
+
+}
+
+.escritura_item{
+  width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 34px;
+  text-decoration: none;
+  color: black;
+
+  p{
+    padding: 5px;
+    margin: 0;
+    border-bottom: transparent 3px solid;
+  }
+  img{
+    width: auto;
+    height: 100px;
+  }
+}
+
+.escritura_item:hover{
+  p{
+    border-bottom:3px solid #9747FF;
+  }
+}
+
+

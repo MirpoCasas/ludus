@@ -1,0 +1,30 @@
+<svg width="427" height="519" viewBox="0 0 427 519" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="30" y="5" width="374" height="509" stroke="white" stroke-width="10"/>
+<rect x="348" y="2" width="59" height="515" stroke="white" stroke-width="4"/>
+<rect x="83" y="41" width="261" height="46" rx="23" stroke="white" stroke-width="4"/>
+<g clip-path="url(#clip0_217_359)">
+<rect x="108" y="176" width="159" height="251" rx="19" stroke="white" stroke-width="6"/>
+<g clip-path="url(#clip1_217_359)">
+<circle cx="199" cy="344" r="79.5" stroke="white" stroke-width="5"/>
+<circle cx="199.5" cy="344.5" r="34.5" stroke="white" stroke-width="8"/>
+<circle cx="199" cy="163" r="53" stroke="white" stroke-width="8"/>
+<circle cx="199.5" cy="163.5" r="32.5" stroke="white" stroke-width="8"/>
+<circle cx="199.5" cy="163.5" r="21.5" stroke="white" stroke-width="4"/>
+<circle cx="199" cy="344" r="16" stroke="white" stroke-width="4"/>
+<rect x="154.5" y="171.5" width="90" height="234" rx="8.5" stroke="white" stroke-width="3"/>
+</g>
+</g>
+<rect x="2.5" y="43.5" width="23" height="65" stroke="white" stroke-width="5"/>
+<rect x="411.5" y="41.5" width="13" height="65" stroke="white" stroke-width="5"/>
+<rect x="411.5" y="125.5" width="13" height="65" stroke="white" stroke-width="5"/>
+<rect x="411.5" y="209.5" width="13" height="65" stroke="white" stroke-width="5"/>
+<rect x="411.5" y="293.5" width="13" height="65" stroke="white" stroke-width="5"/>
+<defs>
+<clipPath id="clip0_217_359">
+<rect width="165" height="257" fill="white" transform="translate(105 173)"/>
+</clipPath>
+<clipPath id="clip1_217_359">
+<rect x="153" y="170" width="93" height="237" rx="6" fill="white"/>
+</clipPath>
+</defs>
+</svg>
