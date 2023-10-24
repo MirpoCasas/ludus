@@ -1,8 +1,13 @@
 "use client";
-import styles from "./page.module.scss";
+import styles from "@/app/page.module.scss";
 import player from "@/public/cassete.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Azeret_Mono } from "next/font/google";
+const Azert = Azeret_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export function Player() {
 
@@ -30,7 +35,7 @@ export function Player() {
 
 
   return (
-    <motion.div className={styles.Player} initial='start' whileHover='hover'>
+    <motion.div className={`${Azert.className} ${styles.Player}`} initial='start' whileHover='hover'>
       <motion.div className={styles.Player_cass} variants={variantsPlayer}>
         <Image src={player} alt='cassete player'></Image>
       </motion.div>

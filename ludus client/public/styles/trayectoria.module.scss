@@ -1,0 +1,33 @@
+.trayectoria{
+  padding: 75px 153px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    align-self: flex-start;
+    font-size: 84px;
+    font-weight: 400;
+    margin: 0;
+  }
+}
+
+.trayectoria_items{
+  display: flex;
+  flex-direction: column;
+  width: 1530px;
+  gap: 30px;
+}
+
+.trayectoria_item{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: fit-content;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: solid 3px #9747FF;
+  h3{
+    margin: 0;
+  }
+}

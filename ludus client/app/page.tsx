@@ -3,8 +3,6 @@
 import styles from "./page.module.scss";
 import { Azeret_Mono } from "next/font/google";
 import Link from "next/link";
-import { Player } from "./Player";
-import { NavBar } from "./NavBar";
 
 const Azert = Azeret_Mono({ subsets: ["latin"], weight: ["400", "500"] });
 
@@ -20,7 +18,7 @@ export default function Home() {
         </div>
         <div className={styles.Intro_navigation}>
           <Link href='/quienes'>.QUIENES SOMOS</Link>
-          <Link href=''>.QUE HACEMOS</Link>
+          <Link href='/quehacemos'>.QUE HACEMOS</Link>
           <Link href=''>.CONTACTO</Link>
         </div>
       </div>

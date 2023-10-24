@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { NavBar } from './NavBar'
-import { Player } from './Player'
+import { NavBar } from '@/components/NavBar'
+import { Player } from '@/components/Player'
 
 
 

@@ -1,12 +1,17 @@
 "use client";
 
-import styles from "./page.module.scss";
+import styles from "@/app/page.module.scss";
 import { useState, useEffect } from "react";
 import menuIcon from "@/public/menuicon.svg";
 import colorsImg from "@/public/colors.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Azeret_Mono } from "next/font/google";
+const Azert = Azeret_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export function NavBar() {
   const variantsNavBar = {
@@ -31,29 +36,16 @@ export function NavBar() {
   const [isOpenNav, setIsOpenNav] = useState(false);
 
   return (
-    <motion.div
-      className={styles.navBar}
-      animate={isOpenNav ? "open" : "closed"}
-      variants={variantsNavBar}
-    >
+    <motion.div className={`${Azert.className} ${styles.navBar}`} animate={isOpenNav ? "open" : "closed"} variants={variantsNavBar}>
       <div className={styles.navBar_top}>
-        <Image
-          src={colorsImg}
-          alt="color swap"
-          className={styles.colorChange}
-          onClick={() => toggleTheme()}
-        ></Image>
-        <Image
-          src={menuIcon}
-          alt="menu"
-          className={styles.menuIcon}
-          onClick={() => setIsOpenNav(!isOpenNav)}
-        ></Image>
+        <Image src={colorsImg} alt="color swap" className={styles.colorChange} onClick={() => toggleTheme()}></Image>
+        <Image src={menuIcon} alt="menu" className={styles.menuIcon} onClick={() => setIsOpenNav(!isOpenNav)}></Image>
       </div>
       <div className={styles.navBar_content}>
-        <Link href="/quienes">Quienes somos</Link>
-        <Link href="/quehacemos">Que hacemos</Link>
-        <Link href="">Contacto</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/">Home</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/quienes">Quienes somos</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/quehacemos">Que hacemos</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="">Contacto</Link>
       </div>
     </motion.div>
   );
