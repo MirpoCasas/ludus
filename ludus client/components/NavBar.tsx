@@ -2,7 +2,7 @@
 
 import styles from "@/app/page.module.scss";
 import { useState, useEffect } from "react";
-import menuIcon from "@/public/menuicon.svg";
+import menuIcon from "@/public/menuIcon.svg";
 import colorsImg from "@/public/colors.svg";
 import Image from "next/image";
 import Link from "next/link";
