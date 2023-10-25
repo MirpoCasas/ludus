@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/app/page.module.scss";
+import styles from "@/public/styles/navbar.module.scss";
 import { useState, useEffect } from "react";
 import menuIcon from "@/public/menuIcon.svg";
 import colorsImg from "@/public/colors.svg";

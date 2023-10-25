@@ -1,44 +1,44 @@
-.filters_bar{
-  width: 1200px;
-  height: 60px;
+.filters_bar {
+  width: 300px;
+  height: 40px;
   border: solid;
   overflow: hidden;
   position: relative;
   background-color: var(--background-color);
 }
-.filters_cont{
-  width: 1200px;
-  height: 60px;
-  overflow:visible;
+.filters_cont {
+  width: 300px;
+  height: 40px;
+  overflow: visible;
   position: relative;
   z-index: 3;
 }
 
-.filterbar_top{
+.filterbar_top {
   width: 100%;
-  height: 60px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 20px;
+  padding: 5px;
   box-sizing: border-box;
-  button{
+  button {
     align-items: center;
-    font-size: 24px;
+    font-size: 18px;
     height: 60px;
     display: flex;
     width: fit-content;
     background-color: transparent;
     border: none;
-    img{
-      height: 100%;
-      width: fit-content;
+    img {
+      height: 20px;
+      width: auto;
       transform: rotate(90deg);
     }
   }
 }
 
-.filters{
+.filters {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
@@ -46,12 +46,86 @@
   padding: 20px 30px;
 }
 
-.filter{
+.filter {
   background-color: transparent;
   border: solid 1px;
   font-size: 18px;
 
-  p{
+  p {
     margin: 5px;
+  }
+}
+@media (min-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+  /* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1281px) {
+  .filters_bar {
+    width: 1200px;
+    height: 60px;
+    border: solid;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--background-color);
+  }
+  .filters_cont {
+    width: 1200px;
+    height: 60px;
+    overflow: visible;
+    position: relative;
+    z-index: 3;
+  }
+
+  .filterbar_top {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+    box-sizing: border-box;
+    button {
+      align-items: center;
+      font-size: 24px;
+      height: 60px;
+      display: flex;
+      width: fit-content;
+      background-color: transparent;
+      border: none;
+      img {
+        height: 100%;
+        width: fit-content;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .filters {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px 30px;
+  }
+
+  .filter {
+    background-color: transparent;
+    border: solid 1px;
+    font-size: 18px;
+
+    p {
+      margin: 5px;
+    }
   }
 }

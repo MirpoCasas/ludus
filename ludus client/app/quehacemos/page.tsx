@@ -3,7 +3,7 @@
 import styles from "@/public/styles/quehacemos.module.scss";
 import { Azeret_Mono } from "next/font/google";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Filters from "@/components/filters";
 import cross from "@/public/cross.svg";
@@ -31,14 +31,14 @@ function ItemProduccion(props: ItemProduccionProps) {
 }
 
 export default function QueHacemos() {
-  const variantsItemOne = {
+  const variantsItemOneMob = {
     1: {
       height: 200,
       width: "100%",
     },
     2: {
       top: 70,
-      width: 1530,
+      width: "100%",
       height: "fit-content",
     },
     3: {
@@ -48,7 +48,44 @@ export default function QueHacemos() {
       left: 0,
     },
   };
-  const variantsItemTwo = {
+  const variantsItemTwoMob = {
+    1: {
+      height: 200,
+      width: "100%",
+      left: 0,
+      top: 250,
+    },
+    2: {
+      height: "fit-content",
+      width: "fit-content",
+      top: 0,
+      left: 100,
+    },
+    3: {
+      top: 70,
+      left: 0,
+      width: "100%",
+      height: "fit-content",
+    },
+  };
+  const variantsItemOneDesk = {
+    1: {
+      height: 200,
+      width: "100%",
+    },
+    2: {
+      top: 70,
+      width: "100%",
+      height: "fit-content",
+    },
+    3: {
+      height: "fit-content",
+      width: "fit-content",
+      top: 0,
+      left: 0,
+    },
+  };
+  const variantsItemTwoDesk = {
     1: {
       height: 200,
       width: "100%",
@@ -64,12 +101,45 @@ export default function QueHacemos() {
     3: {
       top: 70,
       left: 0,
-      width: 1530,
+      width: "100%",
       height: "fit-content",
     },
   };
 
+  const [variantsItemTwo, setVariantsItemTwo] = useState(variantsItemTwoMob);
+  const [variantsItemOne, setVariantsItemOne] = useState(variantsItemOneMob);
   const [appStatus, setAppStatus] = useState(1);
+  const [dimmensions, setDimmensions] = useState([2000, 930]);
+
+  function handleResize() {
+    console.log("resize");
+
+    setDimmensions([window.innerWidth, window.innerHeight]);
+    if (window.innerWidth > 1500) {
+      console.log('Change to desktop')
+      setVariantsItemOne(variantsItemOneDesk);
+      setVariantsItemTwo(variantsItemTwoDesk);
+    } else {
+      console.log('Change to mobile')
+      setVariantsItemOne(variantsItemOneMob);
+      setVariantsItemTwo(variantsItemTwoMob);
+    }
+  }
+
+  // rezise use effect
+  useEffect(() => {
+    handleResize();
+    if (typeof window !== "undefined") {
+      setDimmensions([window.innerWidth, window.innerHeight]);
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
 
   return (
     <div className={`${styles.quehacemos} ${Azert.className}`}>

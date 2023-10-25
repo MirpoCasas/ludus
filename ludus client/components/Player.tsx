@@ -1,5 +1,5 @@
 "use client";
-import styles from "@/app/page.module.scss";
+import styles from "@/public/styles/player.module.scss";
 import player from "@/public/cassete.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";

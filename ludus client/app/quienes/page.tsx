@@ -38,7 +38,7 @@ export default function Quienes() {
               project manager de Ludus.
             </p>
             <div className={styles.quienes_buttoncont}>
-              <TextButton text='Trayectoria' href='/escritura' />
+              <TextButton text='Trayectoria' href='/trayectoria' />
               <TextButton text='Escritura' href='/escritura' />
             </div>
           </div>
@@ -55,7 +55,7 @@ export default function Quienes() {
               project manager de Ludus.
             </p>
             <div className={styles.quienes_buttoncont}>
-              <TextButton text='Trayectoria' href='/escritura' />
+              <TextButton text='Trayectoria' href='/trayectoria' />
               <TextButton text='Escritura' href='/escritura' />
             </div>
           </div>

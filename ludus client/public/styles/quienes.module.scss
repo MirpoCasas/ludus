@@ -1,52 +1,123 @@
-.quienes{
-  padding: 75px 153px ;
+.quienes {
+  padding: 70px 20px;
 
-  h1{
-    font-size: 84px;
+  h1 {
+    font-size: 44px;
     font-weight: 400;
     margin: 0;
   }
 }
 
-.quienes_grid{
+.quienes_grid {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.quienes_item{
+.quienes_item {
   display: flex;
+  flex-direction: column;
   gap: 30px;
-  width: 100%; 
+  width: 100%;
 }
-.quienes_foto{
-width: 300px;
-height: 300px;
-border: solid;
-flex-shrink: 0;
+.quienes_foto {
+  width: 150px;
+  height: 150px;
+  border: solid;
+  flex-shrink: 0;
 }
 
-.quienes_item_contenido{
-  h2{
-    font-size: 54px;
+.quienes_item_contenido {
+  h2 {
+    font-size: 34px;
     font-weight: 500;
     margin: 0;
   }
-  p{
-    font-size: 24px;
-  };
+  p {
+    font-size: 16px;
+  }
 }
 
-.quienes_buttoncont{
+.quienes_buttoncont {
   display: flex;
   gap: 15px;
 }
 
-.TextButton{
+.TextButton {
   background-color: transparent;
   border: solid 3px black;
-  font-size: 24px;
+  font-size: 16px;
 }
-.TextButton:hover{
-    border: solid 3px #F741D5;
+.TextButton:hover {
+  border: solid 3px #f741d5;
+}
+
+@media (min-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+  /* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1281px) {
+  .quienes {
+    padding: 75px 153px;
+
+    h1 {
+      font-size: 84px;
+      font-weight: 400;
+      margin: 0;
+    }
   }
+
+  .quienes_grid {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .quienes_item {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+  }
+  .quienes_foto {
+    width: 300px;
+    height: 300px;
+    border: solid;
+    flex-shrink: 0;
+  }
+
+  .quienes_item_contenido {
+    h2 {
+      font-size: 54px;
+      font-weight: 500;
+      margin: 0;
+    }
+    p {
+      font-size: 24px;
+    }
+  }
+
+  .quienes_buttoncont {
+    display: flex;
+    gap: 15px;
+  }
+
+  .TextButton {
+    background-color: transparent;
+    border: solid 3px black;
+    font-size: 24px;
+  }
+  .TextButton:hover {
+    border: solid 3px #f741d5;
+  }
+}
