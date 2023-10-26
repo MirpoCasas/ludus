@@ -8,25 +8,25 @@
   font-size: 32px;
 }
 
-.Intro_texts{
+.Intro_texts {
   position: relative;
   top: -150px;
   h1 {
     font-size: 2.5em;
     margin: 0;
   }
-  p{
+  p {
     font-size: 0.5em;
     display: flex;
     flex-direction: column;
 
-    span{
+    span {
       color: orange;
     }
   }
 }
 
-.Intro_navigation{
+.Intro_navigation {
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -34,152 +34,48 @@
   right: 3vw;
   top: 70vh;
   align-items: flex-end;
-  a{
-    font-size: .8em;
+  a {
+    font-size: 0.8em;
     color: black;
     text-decoration: none;
   }
 
-  a:hover{
+  a:hover {
     text-decoration: underline;
-    text-decoration-color: #9747FF;
+    text-decoration-color: #9747ff;
   }
 }
 
-@media (min-width:320px) { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
-@media (min-width:480px) { /* smartphones, Android phones, landscape iPhone */ }
-@media (min-width:600px) { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
-@media (min-width:801px) { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
-@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
-@media (min-width:1281px) {
-  .navBar {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    height: 75px;
-    top: 0;
-    left: 0;
-    background-color: var(--background-color);
-    overflow: hidden;
-    z-index: 4;
-    position: absolute;
-    top: 0;
-  }
-  
-  .navBar_top{
-    width: 100%;
-    height: 75px;
-    display: flex;
-    gap: 15px;
-    justify-content: flex-end;
-    align-items: center;
-    flex-shrink: 0;
-    padding: 0px 15px;
-    box-sizing: border-box;
-  }
-  
-  .navBar_content{
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    gap: 30px;
-    font-size: 64px;
-    padding: 50px;
-  
-    a{
-      color: black;
-      text-decoration: none;
-      font-weight: 500;
-    }
-  
-    a:hover{
-      text-decoration: underline;
-      text-decoration-color: #9747FF;
-    }
-  
-  }
-  .menuIcon {
-    height: 60px;
-    width: 60px;
-  }
-  
-  .colorChange {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .Player{
-    position: absolute;
-    width: 400px;
-    left: -190px;
-    bottom: 30px;
-  }
-  
-  .Player_cass{
-    width: fit-content;
-    img{
-      filter: invert(1);
-      height: 300px;
-      width: auto;
-    }
-  }
-  
-  .Player_text{
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: white;
-    background-color: grey;
-    p{
-      margin: 0;
-    }
-  }
-  
-  
+@media (min-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+  /* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
   .Intro {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
+    font-size: 42px;
   }
-  
-  .Intro_texts{
-    position: relative;
+}
+@media (min-width: 801px) {
+  .Intro {
+    font-size: 52px;
+  }
+}
+@media (min-width: 1025px) {
+  .Intro_texts {
+    p {
+      flex-direction: row;
+      gap: 0.5em;
+    }
+  }
+}
+@media (min-width: 1281px) {
+  .Intro {
+    font-size: 64px;
+  }
+
+  .Intro_texts {
     top: -150px;
-    h1 {
-      font-size: 260px;
-      margin: 0;
-    }
-    p{
-      font-size: 28px;
-      padding-left: 20px;
-  
-      span{
-        color: orange;
-      }
-    }
   }
-  
-  .Intro_navigation{
-    display: flex;
-    flex-direction: column;
-    font-size: 54px;
-    width: fit-content;
-    position: absolute;
-    right: 3vw;
-    top: 70vh;
-    align-items: flex-end;
-    a{
-      color: black;
-      text-decoration: none;
-    }
-  
-    a:hover{
-      text-decoration: underline;
-      text-decoration-color: #9747FF;
-    }
-  }
-  
 }

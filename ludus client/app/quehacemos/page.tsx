@@ -4,6 +4,7 @@ import styles from "@/public/styles/quehacemos.module.scss";
 import { Azeret_Mono } from "next/font/google";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useViewportContext } from "@/public/assets/viewportcontext";
 import Image from "next/image";
 import Filters from "@/components/filters";
 import cross from "@/public/cross.svg";
@@ -109,46 +110,32 @@ export default function QueHacemos() {
   const [variantsItemTwo, setVariantsItemTwo] = useState(variantsItemTwoMob);
   const [variantsItemOne, setVariantsItemOne] = useState(variantsItemOneMob);
   const [appStatus, setAppStatus] = useState(1);
-  const [dimmensions, setDimmensions] = useState([2000, 930]);
+  const { width } = useViewportContext();
+  const [viewIndex, setViewIndex] = useState(1)
 
-  function handleResize() {
-    console.log("resize");
-
-    setDimmensions([window.innerWidth, window.innerHeight]);
-    if (window.innerWidth > 1500) {
-      console.log('Change to desktop')
+  useEffect(() => {
+    if (width > 1500){
+      setViewIndex(3)
       setVariantsItemOne(variantsItemOneDesk);
       setVariantsItemTwo(variantsItemTwoDesk);
+    }else if ( width > 600) {
+      setViewIndex(2)
     } else {
-      console.log('Change to mobile')
+      setViewIndex(1)
       setVariantsItemOne(variantsItemOneMob);
       setVariantsItemTwo(variantsItemTwoMob);
     }
-  }
+  }, [width])
 
-  // rezise use effect
-  useEffect(() => {
-    handleResize();
-    if (typeof window !== "undefined") {
-      setDimmensions([window.innerWidth, window.innerHeight]);
-      window.addEventListener("resize", handleResize);
-    }
-
-    return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("resize", handleResize);
-      }
-    };
-  }, []);
 
   return (
     <div className={`${styles.quehacemos} ${Azert.className}`}>
       <h1>Que hacemos</h1>
-      <motion.div className={styles.que_app} initial="start" animate={`${appStatus}`}>
+      <motion.div key={viewIndex} className={styles.que_app} initial="start" animate={`${appStatus}`}>
         <div className={styles.que_app_cont}>
           <Image src={cross} alt="close items" onClick={() => setAppStatus(1)} className={appStatus === 1 ? `${styles.exitcross_inactive}` : `${styles.exitcross_active}`}></Image>
           <motion.div className={`${styles.que_item} ${styles.que_item1}`} variants={variantsItemOne} onClick={() => setAppStatus(2)}>
-            <h3 style={{ fontSize: `${appStatus === 2 ? "48px" : "18px"}` }}>Formacion</h3>
+            <h3 className={appStatus === 2 ? styles.subtitle_active : styles.subtitle_inactive}>Formacion</h3>
             <div className={styles.formacion} style={{ display: `${appStatus === 2 ? "flex" : "none"}` }}>
               <h2>En curso</h2>
               <div className={`${styles.formacion_item_active} ${styles.formacion_item}`}>
@@ -171,7 +158,7 @@ export default function QueHacemos() {
             </div>
           </motion.div>
           <motion.div className={`${styles.que_item} ${styles.que_item2}`} variants={variantsItemTwo} onClick={() => setAppStatus(3)}>
-            <h3 style={{ fontSize: `${appStatus === 3 ? "48px" : "18px"}` }}>Produccion</h3>
+            <h3 className={appStatus === 3 ? styles.subtitle_active : styles.subtitle_inactive}>Produccion</h3>
             <div className={styles.produccion} style={{ display: `${appStatus === 3 ? "flex" : "none"}`}}>
               <Filters />
               <div className={styles.produccion_grid} >

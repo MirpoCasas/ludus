@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useEffect, useState, ReactNode, useContext } from "react";
 
 export const ViewportContext = createContext({ width: 0, height: 0 });
 
@@ -30,3 +30,13 @@ export const ViewportProvider = ({ children } : ViewportProviderProps) => {
     </ViewportContext.Provider>
   );
 };
+
+export function useViewportContext (){
+  const context = useContext(ViewportContext) 
+  if (!context){
+    throw new Error(
+      'Viewport Context needs to be consumed inside a provider'
+    )
+  }
+  return context
+}

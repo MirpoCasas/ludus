@@ -46,7 +46,7 @@
 .que_item {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   height: fit-content;
   padding: 10px 20px;
@@ -60,9 +60,8 @@
 .que_item1 {
   height: 200px;
   width: 100%;
-  position: absolute
+  position: absolute;
 }
-
 
 .que_item2 {
   position: absolute;
@@ -118,7 +117,6 @@
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   gap: 20px;
-  padding: 30px;
   box-sizing: border-box;
 }
 
@@ -129,29 +127,43 @@
   padding: 20px;
 }
 
-.subtitle_active{
+.subtitle_active {
   font-size: 42px;
 }
-.subtitle_inactive{
+.subtitle_inactive {
   font-size: 16px;
 }
 
-@media (min-width: 320px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-}
-@media (min-width: 480px) {
-  /* smartphones, Android phones, landscape iPhone */
-}
 @media (min-width: 600px) {
-  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  .subtitle_active {
+    font-size: 54px;
+  }
+
+  .subtitle_inactive {
+    font-size: 24px;
+    align-self: flex-start;
+  }
+
+  .que_item {
+    gap: 30px;
+  }
+
+  .quehacemos {
+    padding: 60px 50px;
+  }
 }
 @media (min-width: 801px) {
-  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .subtitle_active {
+    align-self: flex-start;
+  }
+
+  .quehacemos {
+    padding: 60px 100px;
+  }
 }
 @media (min-width: 1025px) {
-  /* big landscape tablets, laptops, and desktops */
 }
-@media (min-width: 1281px) {
+@media (min-width: 1550px) {
   .quehacemos {
     padding: 75px 153px;
     display: flex;
