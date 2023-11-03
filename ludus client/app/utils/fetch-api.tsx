@@ -1,4 +1,4 @@
-import qs from "qs";
+/* import qs from "qs";
 import { getStrapiURL } from "./api-helpers";
 
 export async function fetchAPI(
@@ -31,4 +31,4 @@ export async function fetchAPI(
     console.error(error);
     throw new Error(`Please check if your server is running and you set all the required tokens.`);
   }
-}
+} */
