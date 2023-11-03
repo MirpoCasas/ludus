@@ -1,13 +1,13 @@
 .escritura{
-  padding: 75px 153px;
+  padding: 60px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  font-size: 24px;
 
   h1{
-    align-self: flex-start;
-    font-size: 84px;
+    font-size: 1.5em;
     font-weight: 400;
     margin: 0;
   }
@@ -16,35 +16,136 @@
 .escritura_list{
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  margin: 20px;
-
+  gap: 20px;
+  width: 100%;
+  align-items: center;
 }
 
 .escritura_item{
-  width: 1280px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 34px;
+  align-items: flex-end;
   text-decoration: none;
   color: black;
+  height: 120px;
+  gap: 10px;
+  box-sizing: border-box;
+  width: 300px;
+  background-color: rgba(151, 151, 151, 0.486);
+  padding: 10px;
 
+  img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
+
+.escritura_item_contenido{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 3px;
   p{
-    padding: 5px;
+    font-size: .35em;
     margin: 0;
+    width: max-content;
+  }
+
+  h3{
+    font-size: 1em;
+    margin: 0;
+    font-weight: 500;
     border-bottom: transparent 3px solid;
   }
-  img{
-    width: auto;
-    height: 100px;
+}
+
+.escritura_item_low{
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.escritura_item_low_tags{
+  color: white;
+  display: flex;
+  gap: 5px;
+
+  p{
+    background-color: grey;
+    padding: 2px;
   }
 }
 
 .escritura_item:hover{
-  p{
+  h3{
     border-bottom:3px solid #9747FF;
   }
 }
 
 
+@media (min-width:320px) { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
+@media (min-width:480px) { /* smartphones, Android phones, landscape iPhone */ }
+@media (min-width:600px) { 
+  .escritura_item{
+    width: 450px;
+  }
+ }
+@media (min-width:801px) { 
+  .escritura_item{
+    width: 600px
+  }
+ }
+
+
+
+@media (min-width:1025px) { 
+
+  .escritura{
+    font-size: 42px;
+  }
+  
+  .escritura_item{
+    width: 800px;
+    height: 200px;
+
+    img{
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  .escritura_item_low{
+
+  }
+}
+
+
+
+@media (min-width:1550px) { 
+
+  .escritura{
+    padding: 70px 153px;
+    font-size: 48px;
+
+    h1{
+      align-self: flex-start;
+    }
+  }
+  .escritura_item{
+    width: 1000px;
+    height: 270px;
+
+    img{
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  .escritura_item_contenido{
+    h3{
+      
+    }
+  }
+
+ }

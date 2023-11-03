@@ -86,7 +86,17 @@
   }
 }
 @media (min-width: 1025px) {
-  /* big landscape tablets, laptops, and desktops */
+  .filters_bar{
+    width: 750px;
+  }
+
+  .filters_cont{
+    width: 750px;
+  }
+
+  .filterbar_top{
+    height: 60px;
+  }
 }
 @media (min-width: 1550px) {
   .filters_bar {

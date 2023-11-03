@@ -19,7 +19,7 @@ export default function Home() {
         <div className={styles.Intro_navigation}>
           <Link href='/quienes'>.QUIENES SOMOS</Link>
           <Link href='/quehacemos'>.QUE HACEMOS</Link>
-          <Link href=''>.CONTACTO</Link>
+          <Link href='/contacto'>.CONTACTO</Link>
         </div>
       </div>
     </main>

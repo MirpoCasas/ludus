@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "escrituras",
+  "info": {
+    "singularName": "escritura",
+    "pluralName": "escrituras",
+    "displayName": "Escritura"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Post": {
+      "type": "richtext",
+      "required": true
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "filtros": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::filtro.filtro",
+      "mappedBy": "escrituras"
+    }
+  }
+}
