@@ -42,10 +42,10 @@ export function NavBar() {
         <Image src={menuIcon} alt="menu" className={styles.menuIcon} onClick={() => setIsOpenNav(!isOpenNav)}></Image>
       </div>
       <div className={styles.navBar_content}>
-        <Link onClick={()=>setIsOpenNav(false)} href="/">Home</Link>
-        <Link onClick={()=>setIsOpenNav(false)} href="/quienes">Quienes somos</Link>
-        <Link onClick={()=>setIsOpenNav(false)} href="/quehacemos">Que hacemos</Link>
-        <Link onClick={()=>setIsOpenNav(false)} href="">Contacto</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/">HOGAR</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/quienes">QUÍENES SOMOS</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/quehacemos">QUÉ HACEMOS</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/contacto">CONTACTO</Link>
       </div>
     </motion.div>
   );

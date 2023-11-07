@@ -24,7 +24,7 @@ function TextButton(props: TextButtonProps) {
 export default function Quienes() {
   return (
     <div className={`${Azert.className} ${styles.quienes}`}>
-      <h1>Quienes somos</h1>
+      <h1>Quíenes somos</h1>
       <div className={styles.quienes_grid}>
         <div className={styles.quienes_item}>
           <div className={styles.quienes_foto}></div>

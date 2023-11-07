@@ -209,9 +209,9 @@
 
   .que_item {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     height: fit-content;
     padding: 10px 20px;
     border: solid;
@@ -232,6 +232,22 @@
     height: 200px;
     width: 100%;
     position: absolute;
+  }
+
+  .subtitle_inactive{
+    align-self: center;
+  }
+
+  .formacion_top, .produccion_top{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .que_item_text{
+    width: 50%;
   }
 
   .formacion {
@@ -289,4 +305,6 @@
     box-sizing: border-box;
     padding: 20px;
   }
+
+
 }
