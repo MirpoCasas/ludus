@@ -19,6 +19,8 @@ type ItemProduccionProps = {
   done: boolean;
 };
 
+type FlexDirection = "row" | "row-reverse" | "column" | "column-reverse";
+
 type Variant = {
   [key: number]: {
     height: number | string;
@@ -26,7 +28,7 @@ type Variant = {
     top?: number;
     left?: number;
     maxWidth?: string;
-    flexDirection?: string;
+    flexDirection?: FlexDirection;
   };
 };
 
@@ -102,7 +104,7 @@ const variantsItemOneDesk = {
     top: 70,
     maxWidth: "1570px",
     height: "fit-content",
-    flexDirection: "column",
+    flexDirection: "column" as FlexDirection,
   },
   3: {
     height: "fit-content",
@@ -125,7 +127,7 @@ const variantsItemTwoDesk = {
     left: 170,
   },
   3: {
-    flexDirection: "column",
+    flexDirection: "column" as FlexDirection,
     top: 70,
     left: 0,
     maxWidth: "1570px",
