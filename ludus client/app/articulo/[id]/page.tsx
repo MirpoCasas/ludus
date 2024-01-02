@@ -102,7 +102,7 @@ function Articulo({ params }: { params: { id: string } }) {
         <>
           <div className={styles.header}>
             <h1 className={Title.className}>{articleData.Title}</h1>
-            {articleData.Image.data && <img className={styles.foto} alt={"image"} src={`http://localhost:1337${articleData.Image.data.attributes.url}`}></img>}
+            {articleData.Image?.data && <Image className={styles.foto} alt={"image"} src={`http://localhost:1337${articleData.Image.data.attributes.url}`}></Image>}
             {articleData.Subtitulo && <p>Texto debajo del titulo</p>}
           </div>
           <div className={styles.texto}>
