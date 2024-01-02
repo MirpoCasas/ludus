@@ -1,45 +1,105 @@
-.articulo{
-  padding: 60px 10px;
+// loader from cssloaders.github.io
+
+.loadercont {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  font-size: 24px;
-  h1{
-    font-size: 2      em;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 10px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 2px solid #ff3d00;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  border: 2px solid #fff;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-.foto{
-  background-color: grey;
-  width: 100%;
-  height: 300px;
+.articulo {
+  padding: 60px 30px;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  h1 {
+    font-size: 2em;
+  }
 }
 
-.articulo_tags_holder{
+.articulo_tags_holder {
   display: flex;
   gap: 20px;
 
-  p{
+  p {
     background-color: grey;
     padding: 5px;
   }
 }
 
-.texto{
+.texto {
   display: flex;
   flex-direction: column;
-
-  
 }
 
-.texto_meta{
-  
+.articulo_tag {
+  background-color: rgb(192, 192, 192);
+  padding: 5px;
 }
 
-.texto_principal{
-  font-size: 36px;
+.texto_principal {
   margin-top: 20px;
   background-color: rgba(128, 128, 128, 0.158);
   padding: 20px;
   line-height: 3em;
 }
 
+@media (min-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (min-width: 480px) {
+  /* smartphones, Android phones, landscape iPhone */
+}
+@media (min-width: 600px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+}
+@media (min-width: 801px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1281px) {
+  .articulo{
+    padding: 60px 153px;
+  }
+
+  .foto {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: center;
+  }
+}

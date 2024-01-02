@@ -8,6 +8,10 @@ import Link from "next/link";
 import Filters from "@/components/filters";
 import huesero from "@/public/elhuesero.jpeg";
 import { useEffect, useState } from "react";
+import qs from "qs";
+import { PageWrap } from "@/components/pageWrap";
+import backarrow from "@/public/backarrow.svg";
+
 const Azert = Azeret_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -16,6 +20,7 @@ const Azert = Azeret_Mono({
 type ItemEscrituraProps = {
   text: string;
   img: StaticImageData;
+  link: string;
 };
 
 function ItemEscritura(props: ItemEscrituraProps) {
@@ -32,8 +37,8 @@ function ItemEscritura(props: ItemEscrituraProps) {
   };
 
   return (
-    <motion.a href="" className={styles.escritura_item} whileHover="active" initial="start">
-      <motion.img src={props.img.src} alt="item image" variants={variantsItemEscritura}></motion.img>
+    <motion.a href={props.link} className={styles.escritura_item} whileHover="active" initial="start">
+      <motion.img src={`http://localhost:1337${props.img}`} alt="item image" variants={variantsItemEscritura}></motion.img>
       <div className={styles.escritura_item_contenido}>
         <h3>{props.text}</h3>
         <div className={styles.escritura_item_low}>
@@ -50,11 +55,12 @@ function ItemEscritura(props: ItemEscrituraProps) {
 
 export default function Escritura() {
   const [items, setItems] = useState<any>([]);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
- /* useEffect(() => {
+  useEffect(() => {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     if (items.length > 0) return;
-    fetch("http://localhost:1337/api/escrituras", {
+    fetch("http://localhost:1337/api/escrituras?populate=*", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -62,25 +68,70 @@ export default function Escritura() {
       },
     }).then((res) => {
       res.json().then((data) => {
+        console.log(data.data);
         setItems(data.data);
+        setLoaded(true);
       });
     });
-  }, [items]); */
+  }, [items]);
+
+  function filteredSearch() {
+    console.log("filtered search");
+    console.log(activeFilters);
+    const query = qs.stringify(
+      {
+        filters: {
+          id: {
+            $in: activeFilters,
+          },
+        },
+      },
+      {
+        encodeValuesOnly: true, // prettify URL
+      }
+    );
+
+    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+
+    fetch(`http://localhost:1337/api/escrituras?populate=*&${query}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      res.json().then((data) => {
+        console.log(data);
+      });
+    });
+  }
+
+  const [activeFilters, setActiveFilters] = useState<number[]>([]);
 
   return (
-    <div className={`${Azert.className} ${styles.escritura}`}>
-      <h1>Escritura</h1>
-      <Filters />
-      <div className={styles.escritura_list}>
-        <ItemEscritura text={"El huesero"} img={huesero} />
-        <ItemEscritura text={"El huesero"} img={huesero} />
-        <ItemEscritura text={"El huesero"} img={huesero} />
-        <ItemEscritura text={"El huesero"} img={huesero} />
-        <ItemEscritura text={"El huesero"} img={huesero} />
-        <ItemEscritura text={"El huesero"} img={huesero} />
-        <ItemEscritura text={"El huesero"} img={huesero} />
-        <ItemEscritura text={"El huesero"} img={huesero} />
+    <PageWrap>
+      <Link href="/">
+        <Image src={backarrow} alt="go back" className={styles.backarrow}></Image>
+      </Link>
+      <div className={`${Azert.className} ${styles.escritura}`}>
+        <h1>Escritura</h1>
+        <Filters activeFilters={activeFilters} setActiveFilters={setActiveFilters} filteredSearch={filteredSearch} />
+        <div className={styles.escritura_list}>
+          {!loaded && <div className={styles.loader}></div>}
+
+          {loaded &&
+            items.map((item: any) => {
+              return (
+                <ItemEscritura
+                  key={item.id}
+                  text={item.attributes.Title}
+                  img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : huesero.src}
+                  link={`http://localhost:3000/articulo/${item.id}`}
+                />
+              );
+            })}
+        </div>
       </div>
-    </div>
+    </PageWrap>
   );
 }

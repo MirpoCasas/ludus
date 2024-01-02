@@ -683,6 +683,7 @@ export interface ApiEscrituraEscritura extends Schema.CollectionType {
     singularName: 'escritura';
     pluralName: 'escrituras';
     displayName: 'Escritura';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -696,6 +697,10 @@ export interface ApiEscrituraEscritura extends Schema.CollectionType {
       'manyToMany',
       'api::filtro.filtro'
     >;
+    publicationDate: Attribute.Date;
+    Featured: Attribute.Boolean;
+    Colaboradores: Attribute.JSON;
+    Subtitulo: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -731,6 +736,11 @@ export interface ApiFiltroFiltro extends Schema.CollectionType {
       'manyToMany',
       'api::escritura.escritura'
     >;
+    produccions: Attribute.Relation<
+      'api::filtro.filtro',
+      'manyToMany',
+      'api::produccion.produccion'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -742,6 +752,143 @@ export interface ApiFiltroFiltro extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::filtro.filtro',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFormacionFormacion extends Schema.CollectionType {
+  collectionName: 'formacions';
+  info: {
+    singularName: 'formacion';
+    pluralName: 'formacions';
+    displayName: 'Formacion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titulo: Attribute.String;
+    Descripcion: Attribute.Text;
+    Horario: Attribute.String;
+    Foto: Attribute.Media;
+    Activo: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::formacion.formacion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::formacion.formacion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiIntroFranciscoIntroFrancisco extends Schema.SingleType {
+  collectionName: 'intro_franciscos';
+  info: {
+    singularName: 'intro-francisco';
+    pluralName: 'intro-franciscos';
+    displayName: 'Intro Francisco';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Texto: Attribute.Text;
+    Foto: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::intro-francisco.intro-francisco',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::intro-francisco.intro-francisco',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiIntroLuciaIntroLucia extends Schema.SingleType {
+  collectionName: 'intro_lucias';
+  info: {
+    singularName: 'intro-lucia';
+    pluralName: 'intro-lucias';
+    displayName: 'Intro Lucia';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Texto: Attribute.Text & Attribute.Required;
+    Foto: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::intro-lucia.intro-lucia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::intro-lucia.intro-lucia',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProduccionProduccion extends Schema.CollectionType {
+  collectionName: 'produccions';
+  info: {
+    singularName: 'produccion';
+    pluralName: 'produccions';
+    displayName: 'Produccion';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cliente: Attribute.String;
+    Producto: Attribute.String;
+    Activo: Attribute.Boolean;
+    Descripcion: Attribute.Text;
+    Fecha: Attribute.Date;
+    Link: Attribute.String;
+    filtros: Attribute.Relation<
+      'api::produccion.produccion',
+      'manyToMany',
+      'api::filtro.filtro'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::produccion.produccion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::produccion.produccion',
       'oneToOne',
       'admin::user'
     > &
@@ -767,6 +914,10 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::escritura.escritura': ApiEscrituraEscritura;
       'api::filtro.filtro': ApiFiltroFiltro;
+      'api::formacion.formacion': ApiFormacionFormacion;
+      'api::intro-francisco.intro-francisco': ApiIntroFranciscoIntroFrancisco;
+      'api::intro-lucia.intro-lucia': ApiIntroLuciaIntroLucia;
+      'api::produccion.produccion': ApiProduccionProduccion;
     }
   }
 }

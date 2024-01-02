@@ -1,3 +1,13 @@
+.backarrow{
+  position: absolute;
+  width: 50px;
+  height: auto;
+  z-index: 10;
+  top: 15px;
+  left: 15px;
+}
+
+
 .contacto{
   padding: 60px 20px;
   display: flex;
@@ -40,6 +50,11 @@
     background-color: transparent;
     border: solid 1px black;
     padding: 5px 15px;
+  }
+
+  textarea{
+    resize: none;
+    height: 300px;
   }
 }
 

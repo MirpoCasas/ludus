@@ -4,7 +4,8 @@
   "info": {
     "singularName": "escritura",
     "pluralName": "escrituras",
-    "displayName": "Escritura"
+    "displayName": "Escritura",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,20 +20,33 @@
       "required": true
     },
     "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "filtros": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::filtro.filtro",
       "mappedBy": "escrituras"
+    },
+    "publicationDate": {
+      "type": "date"
+    },
+    "Featured": {
+      "type": "boolean"
+    },
+    "Colaboradores": {
+      "type": "json"
+    },
+    "Subtitulo": {
+      "type": "string"
     }
   }
 }

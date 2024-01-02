@@ -1,5 +1,6 @@
 "use client";
 
+import { PageWrap } from "@/components/pageWrap";
 import styles from "./page.module.scss";
 import { Azeret_Mono } from "next/font/google";
 import Link from "next/link";
@@ -8,6 +9,8 @@ const Azert = Azeret_Mono({ subsets: ["latin"], weight: ["400", "500"] });
 
 export default function Home() {
   return (
+    <PageWrap>
+
     <main className={`${styles.main} ${Azert.className}`}>
       <div className={styles.Intro}>
         <div className={styles.Intro_texts}>
@@ -23,5 +26,6 @@ export default function Home() {
         </div>
       </div>
     </main>
+    </PageWrap>
   );
 }

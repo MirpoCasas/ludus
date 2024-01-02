@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produccions",
+  "info": {
+    "singularName": "produccion",
+    "pluralName": "produccions",
+    "displayName": "Produccion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Cliente": {
+      "type": "string"
+    },
+    "Producto": {
+      "type": "string"
+    },
+    "Activo": {
+      "type": "boolean"
+    },
+    "Descripcion": {
+      "type": "text"
+    },
+    "Fecha": {
+      "type": "date"
+    },
+    "Link": {
+      "type": "string"
+    },
+    "filtros": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::filtro.filtro",
+      "mappedBy": "produccions"
+    }
+  }
+}

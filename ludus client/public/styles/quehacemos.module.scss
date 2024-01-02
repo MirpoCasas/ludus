@@ -1,3 +1,13 @@
+.backarrow{
+  position: absolute;
+  width: 50px;
+  height: auto;
+  z-index: 10;
+  top: 15px;
+  left: 15px;
+}
+
+
 .quehacemos {
   padding: 60px 20px;
   display: flex;
@@ -215,6 +225,7 @@
     height: fit-content;
     padding: 10px 20px;
     border: solid;
+    max-width: 1570px;
     h3 {
       margin: 0;
     }

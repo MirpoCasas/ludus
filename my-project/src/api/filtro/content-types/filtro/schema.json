@@ -21,6 +21,12 @@
       "relation": "manyToMany",
       "target": "api::escritura.escritura",
       "inversedBy": "filtros"
+    },
+    "produccions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::produccion.produccion",
+      "inversedBy": "filtros"
     }
   }
 }

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { NavBar } from "@/components/NavBar";
 import { Player } from "@/components/Player";
 
-import { ViewportProvider } from "@/public/assets/viewportcontext";
+import { ContextProvider } from "@/public/assets/contextprovider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,11 +14,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <ViewportProvider>
+        <ContextProvider>
           <NavBar />
           <Player />
           {children}
-        </ViewportProvider>
+        </ContextProvider>
       </body>
     </html>
   );

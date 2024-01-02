@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "intro_franciscos",
+  "info": {
+    "singularName": "intro-francisco",
+    "pluralName": "intro-franciscos",
+    "displayName": "Intro Francisco"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Texto": {
+      "type": "text"
+    },
+    "Foto": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
