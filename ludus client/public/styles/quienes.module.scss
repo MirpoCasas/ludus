@@ -55,8 +55,9 @@
 .TextButton {
   background-color: transparent;
   border: none;
-  border-bottom: solid 3px black;
+  border-bottom: solid 3px var(--font-color);;
   font-size: 16px;
+  color: var(--font-color);
 }
 .TextButton:hover {
   border-bottom: solid 3px #f741d5;

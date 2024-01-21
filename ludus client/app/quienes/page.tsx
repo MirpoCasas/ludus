@@ -77,7 +77,7 @@ export default function Quienes() {
                 {descFrancisco ? descFrancisco : "Cargando..."}
               </p>
               <div className={styles.quienes_buttoncont}>
-                <TextButton text="Trayectoria" href="/trayectoria" />
+                <TextButton text="Trayectoria" href="/trayectoria/francisco" />
                 <TextButton text="Escritura" href="/escritura" />
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function Quienes() {
                 {descLucia ? descLucia : "Cargando..."}
               </p>
               <div className={styles.quienes_buttoncont}>
-                <TextButton text="Trayectoria" href="/trayectoria" />
+                <TextButton text="Trayectoria" href="/trayectoria/lucia" />
                 <TextButton text="Escritura" href="/escritura" />
               </div>
             </div>

@@ -12,6 +12,8 @@ import qs from "qs";
 import Link from "next/link";
 import { PageWrap } from "@/components/pageWrap";
 import backarrow from "@/public/backarrow.svg";
+import Formacion  from "@/components/quehacemos/formacion";
+import Produccion from "@/components/quehacemos/produccion";
 
 const Azert = Azeret_Mono({ subsets: ["latin"], weight: ["400", "500"] });
 
@@ -32,31 +34,6 @@ type Variant = {
   };
 };
 
-function ItemProduccion(props: any) {
-  return (
-    <div className={styles.itemproduccion}>
-      <h3>Cliente: {props.Cliente}</h3>
-      <h3>Producto: {props.Producto}</h3>
-      {props.done ? <p>Finalizado</p> : <p>En progreso</p>}
-      <p>{props.Descripcion}</p>
-      <p>{props.Fecha}</p>
-      {props.Activo && <button>Leer Articulo</button>}
-    </div>
-  );
-}
-
-function ItemFormacion(props: any) {
-  return (
-    <div className={`${styles.formacion_item_active} ${styles.formacion_item}`}>
-      <div className={styles.formacion_pic}></div>
-      <div className={styles.formacion_item_content}>
-        <h3>{props.Titulo}</h3>
-        <p>{props.Horario}</p>
-        <button>{props.Activo ? "Inscribirme" : "Quisiera saber mas sobre este curso"}</button>
-      </div>
-    </div>
-  );
-}
 
 const variantsItemOneMob = {
   1: {
@@ -141,14 +118,8 @@ export default function QueHacemos() {
   const [appStatus, setAppStatus] = useState(1);
   const { width } = useViewportContext();
   const [viewIndex, setViewIndex] = useState(1);
-  const [activeFilters, setActiveFilters] = useState<number[]>([]);
-  const [itemsProduccion, setItemsProduccion] = useState<any>([]);
-  const [itemsFormacion, setItemsFormacion] = useState<any>([]);
-  const [activeFormacion, setActiveFormacion] = useState<any>([]);
-  const [inactiveFormacion, setInactiveFormacion] = useState<any>([]);
-  const [loadedProduccion, setLoadedProduccion] = useState<boolean>(false);
-  const [loadedFormacion, setLoadedFormacion] = useState<boolean>(false);
 
+  /*
   function filteredSearch() {
     console.log("filtered search");
     console.log(activeFilters);
@@ -179,21 +150,7 @@ export default function QueHacemos() {
       });
     });
   }
-
-  function handleItemsProduccion(items: any[]) {
-    console.log("handleItemsProduccion");
-
-    let activeItems = items.filter((item) => item.attributes.Activo);
-    let inactiveItems = items.filter((item) => !item.attributes.Activo);
-
-    console.log("Active Items", activeItems);
-    console.log("Inactive Items", inactiveItems);
-
-    setActiveFormacion(activeItems);
-    setInactiveFormacion(inactiveItems);
-    setLoadedFormacion(true);
-  }
-
+*/
   useEffect(() => {
     if (width > 1500) {
       setViewIndex(3);
@@ -208,45 +165,6 @@ export default function QueHacemos() {
     }
   }, [width]);
 
-  useEffect(() => {
-    const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-    if (loadedFormacion && loadedProduccion) {
-      console.log("Both loaded");
-    }
-    if (!loadedFormacion) {
-      console.log("Calling Formacion");
-      fetch("http://localhost:1337/api/formacions?populate=*", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => {
-        res.json().then((data) => {
-          console.log("Formacion response", data.data);
-          setItemsFormacion(data.data);
-        });
-      });
-    }
-    if (!loadedProduccion) {
-      console.log("Calling Produccion");
-
-      fetch("http://localhost:1337/api/produccions?populate=*", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((res) => {
-        res.json().then((data) => {
-          console.log("Produccion response", data.data);
-          handleItemsProduccion(data.data);
-        });
-      });
-    }
-    console.log("loadedFormacion", loadedFormacion);
-    console.log("loadedProduccion", loadedProduccion);
-  }, [loadedFormacion, loadedProduccion]);
 
   return (
     <PageWrap>
@@ -259,53 +177,10 @@ export default function QueHacemos() {
           <div className={styles.que_app_cont}>
             <Image src={cross} alt="close items" onClick={() => setAppStatus(1)} className={appStatus === 1 ? `${styles.exitcross_inactive}` : `${styles.exitcross_active}`}></Image>
             <motion.div className={`${styles.que_item} ${styles.que_item1}`} variants={variantsItemOne} onClick={() => setAppStatus(2)}>
-              <div className={styles.formacion_top}>
-                <h3 className={appStatus === 2 ? styles.subtitle_active : styles.subtitle_inactive}>Formación</h3>
-                {appStatus === 1 && (
-                  <p className={styles.que_item_text}>
-                    Si encuentras el corazón de un texto, puedes escribir lo que sea. En Ludus hemos creado contenidos publicitarios, periodísticos, didácticos, narrativos, estratégicos, académicos y
-                    críticos para instituciones, empresas y personas. Estamos ansiosos por conocer nuestro próximo desafío.
-                  </p>
-                )}
-              </div>
-              <div className={styles.formacion} style={{ display: `${appStatus === 2 ? "flex" : "none"}` }}>
-                <h2>En curso</h2>
-                {loadedFormacion &&
-                  activeFormacion.map((item: any) => {
-                    console.log(item.attributes);
-                    console.log(item.attributes);
-                    return <ItemFormacion key={item.id} {...item.attributes} />;
-                  })}
-                <h2>Finalizados</h2>
-                <div className={`${styles.formacion_item_inactive} ${styles.formacion_item}`}>
-                  <div className={styles.formacion_pic}></div>
-                  <div className={styles.formacion_item_content}>
-                    <h3>Taller de Poesia contemporanea Roma Norte</h3>
-                    <p>Lunes 19hs precencial</p>
-                    <button>Quisiera saber mas sobre este curso</button>
-                  </div>
-                </div>
-              </div>
+              <Formacion appStatus={appStatus} />
             </motion.div>
             <motion.div className={`${styles.que_item} ${styles.que_item2}`} variants={variantsItemTwo} onClick={() => setAppStatus(3)}>
-              <div className={styles.produccion_top}>
-                <h3 className={appStatus === 3 ? styles.subtitle_active : styles.subtitle_inactive}>Producción</h3>
-                {appStatus === 1 && (
-                  <p className={styles.que_item_text}>
-                    Si encuentras el corazón de un texto, puedes escribir lo que sea. En Ludus hemos creado contenidos publicitarios, periodísticos, didácticos, narrativos, estratégicos, académicos y
-                    críticos para instituciones, empresas y personas. Estamos ansiosos por conocer nuestro próximo desafío.
-                  </p>
-                )}
-              </div>
-              <div className={styles.produccion} style={{ display: `${appStatus === 3 ? "flex" : "none"}` }}>
-                <Filters activeFilters={activeFilters} setActiveFilters={setActiveFilters} filteredSearch={filteredSearch} />
-                <div className={styles.produccion_grid}>
-                  <ItemProduccion done={false} />
-                  <ItemProduccion done={false} />
-                  <ItemProduccion done={false} />
-                  <ItemProduccion done={true} />
-                </div>
-              </div>
+              <Produccion appStatus={appStatus} />
             </motion.div>
           </div>
         </motion.div>

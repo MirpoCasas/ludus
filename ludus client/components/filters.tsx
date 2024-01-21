@@ -123,7 +123,6 @@ export default function Filters(props: FiltersProps) {
       },
     }).then((res) => {
       res.json().then((data) => {
-        console.log(data.data);
         setFilterData(data.data);
       });
     });

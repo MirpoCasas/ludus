@@ -896,6 +896,45 @@ export interface ApiProduccionProduccion extends Schema.CollectionType {
   };
 }
 
+export interface ApiTrayectoriaTrayectoria extends Schema.CollectionType {
+  collectionName: 'trayectorias';
+  info: {
+    singularName: 'trayectoria';
+    pluralName: 'trayectorias';
+    displayName: 'Trayectoria';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cliente: Attribute.String;
+    Titulo: Attribute.String;
+    Comienzo: Attribute.Date;
+    Final: Attribute.Date;
+    Descripcion: Attribute.Text;
+    Link: Attribute.String;
+    Autor: Attribute.Enumeration<
+      ['Lucia Maldivo Franchi', 'Francisco Marzioni', 'Ambos']
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::trayectoria.trayectoria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::trayectoria.trayectoria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -918,6 +957,7 @@ declare module '@strapi/types' {
       'api::intro-francisco.intro-francisco': ApiIntroFranciscoIntroFrancisco;
       'api::intro-lucia.intro-lucia': ApiIntroLuciaIntroLucia;
       'api::produccion.produccion': ApiProduccionProduccion;
+      'api::trayectoria.trayectoria': ApiTrayectoriaTrayectoria;
     }
   }
 }

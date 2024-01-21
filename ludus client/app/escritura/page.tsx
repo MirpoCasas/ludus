@@ -110,7 +110,7 @@ export default function Escritura() {
 
   return (
     <PageWrap>
-      <Link href="/">
+      <Link href="/quienes">
         <Image src={backarrow} alt="go back" className={styles.backarrow}></Image>
       </Link>
       <div className={`${Azert.className} ${styles.escritura}`}>

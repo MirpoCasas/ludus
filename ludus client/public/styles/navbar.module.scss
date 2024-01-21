@@ -32,7 +32,7 @@
   padding: 30px;
 
   a {
-    color: black;
+    color: var(--font-color);;
     text-decoration: none;
     font-weight: 500;
   }
@@ -45,6 +45,12 @@
 .menuIcon {
   height: 40px;
   width: 40px;
+}
+
+[data-theme="dark"]{
+  .menuIcon{
+    filter: invert(1);
+  }
 }
 
 .colorChange {
@@ -108,7 +114,7 @@
     padding: 50px;
 
     a {
-      color: black;
+      color: var(--font-color);
       text-decoration: none;
       font-weight: 500;
     }
@@ -126,5 +132,9 @@
   .colorChange {
     width: 40px;
     height: 40px;
+  }
+
+  .nota{
+    display: none;
   }
 }
