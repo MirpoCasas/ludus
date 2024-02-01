@@ -5,14 +5,12 @@ const Azert = Azeret_Mono({ subsets: ["latin"], weight: ["400", "500"] });
 import Link from "next/link";
 import Image from "next/image";
 import { PageWrap } from "@/components/pageWrap";
-import backarrow from "@/public/backarrow.svg";
+import BackButton from "@/components/backButton";
 
 export default function contacto() {
   return (
     <PageWrap>
-      <Link href="/">
-        <Image src={backarrow} alt="go back" className={styles.backarrow}></Image>
-      </Link>
+      <BackButton href="/"/>
       <div className={`${styles.contacto} ${Azert.className}`}>
         <h1>Contacto</h1>
         <form action="" method="post" className={styles.contacto_form}>

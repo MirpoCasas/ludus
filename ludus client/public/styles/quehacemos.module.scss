@@ -90,7 +90,7 @@
 
 .formacion_item {
   width: 100%;
-  border: solid black 1px;
+  border: solid var(--font-color) 1px;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -115,6 +115,11 @@
   width: 280px;
   height: 240px;
   background-color: grey;
+  position: relative;
+
+  img{
+    object-fit: cover;
+  }
 }
 
 .formacion_button{
@@ -164,10 +169,11 @@
 .produccion_btn{
   background-color: transparent;
   width: max-content;
-  padding: 5px 10px;
+  padding: 10px;
   color: var(--font-color);
   border: solid 3px var(--font-color);
   cursor: pointer;
+  font-family: inherit;
 }
 
 [data-theme="dark"]{
@@ -175,9 +181,6 @@
     background-color: #ffffff88;
   }
 
-  .quehacemos_exitcross_active{
-    filter: invert(1);
-  }
 }
 [data-theme="light"]{
   .produccion_btn:hover{
@@ -260,6 +263,11 @@
     transition: opacity 1s ease-in-out;
     opacity: 1;
   }
+
+  [data-theme = "dark"] .exitcross_active, .exitcross_inactive {
+    filter: invert(1);
+  }
+
   .exitcross_inactive {
     transition: opacity 0.3s ease-in-out;
     opacity: 0;
@@ -317,7 +325,6 @@
 
   .formacion_item {
     width: 1000px;
-    border: solid black 1px;
     display: flex;
     padding: 20px;
     gap: 30px;
@@ -340,7 +347,6 @@
       background-color: #6d7bff;
     }
   }
-
 
   .formacion_item_inactive {
     flex-direction: row-reverse;

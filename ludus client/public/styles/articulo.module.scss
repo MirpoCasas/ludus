@@ -76,6 +76,10 @@
   line-height: 3em;
 }
 
+.imgHolder{
+  position: relative;
+}
+
 @media (min-width: 320px) {
   /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 }
@@ -96,7 +100,7 @@
     padding: 60px 153px;
   }
 
-  .foto {
+  .foto, .imgHolder {
     width: 100%;
     height: 520px;
     object-fit: cover;

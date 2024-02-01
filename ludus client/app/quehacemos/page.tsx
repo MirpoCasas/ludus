@@ -85,7 +85,7 @@ const variantsItemOneDesk = {
   },
   3: {
     height: "fit-content",
-    maxWidth: "205px",
+    maxWidth: "190px",
     top: 0,
     left: 0,
   },

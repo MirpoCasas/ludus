@@ -7,7 +7,50 @@ import styles from "@/public/styles/quienes.module.scss";
 import backarrow from "@/public/backarrow.svg";
 import Image from "next/image";
 import axios from "axios";
+import BackButton from "@/components/backButton";
 import { useEffect, useState } from "react";
+
+interface Response {
+    Texto: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    Foto: {
+      data: {
+        id: number;
+        attributes: {
+          name: string;
+          alternativeText: null | string;
+          caption: null | string;
+          width: number;
+          height: number;
+          formats: {
+            thumbnail: {
+              name: string;
+              hash: string;
+              ext: string;
+              mime: string;
+              path: null | string;
+              width: number;
+              height: number;
+              size: number;
+              url: string;
+            };
+          };
+          hash: string;
+          ext: string;
+          mime: string;
+          size: number;
+          url: string;
+          previewUrl: null | string;
+          provider: string;
+          provider_metadata: null | any;
+          createdAt: string;
+          updatedAt: string;
+        };
+      };
+    };
+  };
 
 const Azert = Azeret_Mono({
   subsets: ["latin"],
@@ -31,50 +74,56 @@ export default function Quienes() {
 
 //  const [loadedFrancisco, setLoadedFrancisco] = useState<boolean>(false)
 //  const [loadedLucia, setLoadedLucia] = useState<boolean>(false)
-  const [descFrancisco, setDescFrancisco] = useState<string | null>(null)
-  const [descLucia, setDescLucia] = useState<string | null>(null)
+  const [descFrancisco, setDescFrancisco] = useState<Response | null>(null)
+  const [descLucia, setDescLucia] = useState<Response | null>(null)
 
   useEffect(() => {
     if (descFrancisco && descLucia) return;
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-    axios.get("http://localhost:1337/api/intro-francisco", {
+    axios.get("http://localhost:1337/api/intro-francisco?populate=*", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     }).then((res) => {
       console.log("Fran response", res.data);
-      setDescFrancisco(res.data.data.attributes.Texto)
+      setDescFrancisco(res.data.data.attributes)
     }).catch((error) => {
       console.error("Error fetching data: ", error);
     });
-    axios.get("http://localhost:1337/api/intro-lucia", {
+    axios.get("http://localhost:1337/api/intro-lucia?populate=*", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     }).then((res) => {
       console.log("Lucia response", res.data);
-      setDescLucia(res.data.data.attributes.Texto)
+      setDescLucia(res.data.data.attributes)
     }).catch((error) => {
       console.error("Error fetching data: ", error);
     });
   }, [descFrancisco, descLucia]);
 
+  const myLoader = ({ src }: { src: string }) => {
+    return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`;
+  }
+
   return (
     <PageWrap>
-      <Link href="/">
-        <Image src={backarrow} alt="go back" className={styles.backarrow}></Image>
-      </Link>
+      <BackButton href="/"/>
       <div className={`${Azert.className} ${styles.quienes}`}>
         <h1>Quíenes somos</h1>
         <div className={styles.quienes_grid}>
           <div className={styles.quienes_item}>
-            <div className={styles.quienes_foto}></div>
+            <div className={styles.quienes_foto}>
+              { descFrancisco &&
+              <Image loader={myLoader} src={descFrancisco.Foto.data.attributes.url} alt="Francisco Marzioni" fill/>
+              }
+            </div>
             <div className={styles.quienes_item_contenido}>
               <h2>Francisco Marzioni</h2>
               <p>
-                {descFrancisco ? descFrancisco : "Cargando..."}
+                {descFrancisco ? descFrancisco.Texto : "Cargando..."}
               </p>
               <div className={styles.quienes_buttoncont}>
                 <TextButton text="Trayectoria" href="/trayectoria/francisco" />
@@ -83,11 +132,15 @@ export default function Quienes() {
             </div>
           </div>
           <div className={styles.quienes_item}>
-            <div className={styles.quienes_foto}></div>
+            <div className={styles.quienes_foto}>
+              { descLucia &&
+              <Image loader={myLoader} src={descLucia.Foto.data.attributes.url} alt="Lucia Maldivo Franchi" fill/>
+              }
+            </div>
             <div className={styles.quienes_item_contenido}>
               <h2>Lucia Maldivo Franchi</h2>
               <p>
-                {descLucia ? descLucia : "Cargando..."}
+                {descLucia ? descLucia.Texto : "Cargando..."}
               </p>
               <div className={styles.quienes_buttoncont}>
                 <TextButton text="Trayectoria" href="/trayectoria/lucia" />

@@ -41,12 +41,14 @@
   width: 300px;
   background-color: rgba(151, 151, 151, 0.486);
   padding: 10px;
+}
 
-  img{
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-  }
+.escritura_item_imgHolder{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  flex-shrink: 0;
+  position: relative;
 }
 
 .escritura_item_contenido{
@@ -55,6 +57,7 @@
   justify-content: flex-end;
   height: 100%;
   gap: 3px;
+
   p{
     font-size: .35em;
     margin: 0;
@@ -154,6 +157,18 @@
   .escritura_item_contenido{
     h3{
       
+    }
+  }
+
+  .escritura_item_imgHolder{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    flex-shrink: 0;
+    position: relative;
+
+    img{
+      object-fit: cover;
     }
   }
 

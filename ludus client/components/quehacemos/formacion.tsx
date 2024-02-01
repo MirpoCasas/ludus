@@ -1,10 +1,19 @@
 import { useState, useEffect } from "react";
 import styles from "@/public/styles/quehacemos.module.scss";
+import Image from "next/image";
+import { inherits } from "util";
 
 function ItemFormacion(props: any) {
+
+  const myLoader = ({ src }: { src: string }) => {
+    return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`;
+  }
+
   return (
     <div className={props.attributes.Activo ? `${styles.formacion_item_active} ${styles.formacion_item}` : `${styles.formacion_item_inactive} ${styles.formacion_item}`}>
-      <div className={styles.formacion_pic}></div>
+      <div className={styles.formacion_pic}>
+        <Image loader={myLoader} src={props.attributes.Foto.data.attributes.url} layout="fill" alt=""></Image>
+      </div>
       <div className={styles.formacion_item_content}>
         <h3>{props.attributes.Titulo}</h3>
         <p>{props.attributes.Horario}</p>

@@ -24,6 +24,11 @@ type ItemEscrituraProps = {
 };
 
 function ItemEscritura(props: ItemEscrituraProps) {
+
+  const myLoader = ({ src }: { src: string }) => {
+    return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`;
+  }
+
   const variantsItemEscritura = {
     start: {
       opacity: 1,
@@ -38,7 +43,9 @@ function ItemEscritura(props: ItemEscrituraProps) {
 
   return (
     <motion.a href={props.link} className={styles.escritura_item} whileHover="active" initial="start">
-      <motion.img src={`http://localhost:1337${props.img}`} alt="item image" variants={variantsItemEscritura}></motion.img>
+      <div className={styles.escritura_item_imgHolder}>
+        {props.img && <Image src={props.img} loader={myLoader} alt="Image" layout="fill"></Image>}
+      </div>
       <div className={styles.escritura_item_contenido}>
         <h3>{props.text}</h3>
         <div className={styles.escritura_item_low}>
@@ -125,7 +132,7 @@ export default function Escritura() {
                 <ItemEscritura
                   key={item.id}
                   text={item.attributes.Title}
-                  img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : huesero.src}
+                  img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
                   link={`http://localhost:3000/articulo/${item.id}`}
                 />
               );

@@ -2,10 +2,10 @@
 
 import styles from "@/public/styles/articulo.module.scss";
 import { Azeret_Mono, Crimson_Text, Domine } from "next/font/google";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { PageWrap } from "@/components/pageWrap";
+import BackButton from "@/components/backButton";
 
 const Azert = Azeret_Mono({ subsets: ["latin"], weight: ["400", "500"] });
 
@@ -78,6 +78,9 @@ type articleData = {
 
 function Articulo({ params }: { params: { id: string } }) {
   const [articleData, setArticleData] = useState<articleData | null>(null);
+  const myLoader = ({ src }: { src: string }) => {
+    return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`;
+  }
 
   //fetch data
   useEffect(() => {
@@ -97,44 +100,51 @@ function Articulo({ params }: { params: { id: string } }) {
   }, [params]);
 
   return (
-    <div className={`${Azert.className} ${styles.articulo}`}>
-      {articleData && (
-        <>
-          <div className={styles.header}>
-            <h1 className={Title.className}>{articleData.Title}</h1>
-            {articleData.Image?.data && <Image className={styles.foto} alt={"image"} src={`http://localhost:1337${articleData.Image.data.attributes.url}`}></Image>}
-            {articleData.Subtitulo && <p>Texto debajo del titulo</p>}
-          </div>
-          <div className={styles.texto}>
-            <div className={styles.texto_meta}>
-              {articleData.Colaboradores &&
-                Object.entries(articleData.Colaboradores).map(([key, value]) => {
-                  return (
-                    <p key={key}>
-                      {key}: {value}
-                    </p>
-                  );
-                })}
-              <div className={styles.articulo_tags_holder}>
-                {articleData.filtros.data.map((tag) => {
-                  return (
-                    <div className={styles.articulo_tag} key={tag.id}>
-                      #{tag.attributes.Nombre}
-                    </div>
-                  );
-                })}
+    <PageWrap>
+      <BackButton href="/escritura" />
+      <div className={`${Azert.className} ${styles.articulo}`}>
+        {articleData && (
+          <>
+            <div className={styles.header}>
+              <h1 className={Title.className}>{articleData.Title}</h1>
+              {articleData.Image?.data && 
+              <div className={styles.imgHolder}>
+                <Image className={styles.foto} loader={myLoader} alt={"image"} src={articleData.Image.data.attributes.url} layout="fill"></Image>
               </div>
+              }
+              {articleData.Subtitulo && <p>Texto debajo del titulo</p>}
             </div>
-            <p className={`${Title.className} ${styles.texto_principal}`}>{articleData.Post}</p>
+            <div className={styles.texto}>
+              <div className={styles.texto_meta}>
+                {articleData.Colaboradores &&
+                  Object.entries(articleData.Colaboradores).map(([key, value]) => {
+                    return (
+                      <p key={key}>
+                        {key}: {value}
+                      </p>
+                    );
+                  })}
+                <div className={styles.articulo_tags_holder}>
+                  {articleData.filtros.data.map((tag) => {
+                    return (
+                      <div className={styles.articulo_tag} key={tag.id}>
+                        #{tag.attributes.Nombre}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <p className={`${Title.className} ${styles.texto_principal}`}>{articleData.Post}</p>
+            </div>
+          </>
+        )}
+        {!articleData && (
+          <div className={styles.loadercont}>
+            <span className={styles.loader}></span>
           </div>
-        </>
-      )}
-      {!articleData && (
-        <div className={styles.loadercont}>
-          <span className={styles.loader}></span>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </PageWrap>
   );
 }
 
