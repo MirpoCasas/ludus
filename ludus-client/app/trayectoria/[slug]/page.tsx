@@ -60,7 +60,7 @@ export default function Trayectoria({params}: {params: {slug: string}}) {
   useEffect(() => {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     if (loaded) return;
-    fetch("http://localhost:1337/api/trayectorias?populate=*", {
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/trayectorias?populate=*`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

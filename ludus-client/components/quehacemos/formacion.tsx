@@ -44,7 +44,7 @@ export default function Formacion({ appStatus }: any) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     if (!ignoreOne) {
       console.log("Calling Formacion");
-      fetch("http://localhost:1337/api/formacions?populate=*", {
+      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/formacions?populate=*`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

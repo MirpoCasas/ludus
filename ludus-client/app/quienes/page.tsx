@@ -80,7 +80,7 @@ export default function Quienes() {
   useEffect(() => {
     if (descFrancisco && descLucia) return;
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-    axios.get("http://localhost:1337/api/intro-francisco?populate=*", {
+    axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/intro-francisco?populate=*`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -91,7 +91,7 @@ export default function Quienes() {
     }).catch((error) => {
       console.error("Error fetching data: ", error);
     });
-    axios.get("http://localhost:1337/api/intro-lucia?populate=*", {
+    axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/intro-lucia?populate=*`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,

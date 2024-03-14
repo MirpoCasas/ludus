@@ -11,7 +11,7 @@ const animationVariants = {
 
 function ItemProduccion(props: any) {
   return (
-    <motion.div initial="hidden" animate="visible" exit="exit" transition={{ duration: 1 }} variants={animationVariants} className={styles.itemproduccion} key={props.key}>
+    <motion.div initial="hidden" animate="visible" exit="exit" transition={{ duration: 1 }} variants={animationVariants} className={styles.itemproduccion} key={props.keyname}>
       <h3>Cliente: {props.attributes.Cliente}</h3>
       <h3>Producto: {props.attributes.Producto}</h3>
       {props.attributes.Activo ? <p className={styles.produccion_status_on}>Finalizado</p> : <p className={styles.produccion_status_off}>En progreso</p>}
@@ -38,7 +38,7 @@ export default function Produccion({ appStatus }: any) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     if (!ignoreOne) {
       console.log("Calling Produccion");
-      fetch("http://localhost:1337/api/produccions?populate=*", {
+      fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/produccions?populate=*`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default function Produccion({ appStatus }: any) {
           <AnimatePresence mode="wait" initial={false}>
             {itemsProduccion.map((item: any) => {
               if (activeFiltersArr.length === 0) {
-                return <ItemProduccion key={item.id} attributes={item.attributes} />;
+                return <ItemProduccion keyname={item.id} key={item.id} attributes={item.attributes} />;
               } else if (item.attributes.filtros.data.some((obj: any) => activeFiltersArr.some((obj2: any) => obj2.id === obj.id))) {
                 return <ItemProduccion key={item.id} attributes={item.attributes} />;
               }

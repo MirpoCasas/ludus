@@ -60,7 +60,7 @@ export default function Escritura() {
   useEffect(() => {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
     if (items.length > 0) return;
-    fetch("http://localhost:1337/api/escrituras?populate=*", {
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/escrituras?populate=*`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -114,9 +114,9 @@ export default function Escritura() {
                 return (
                   <ItemEscritura
                     key={item.id}
-                    text={item.attributes.Title}
+                    text={item.attributes.Titulo}
                     img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
-                    link={`http://localhost:3000/articulo/${item.id}`}
+                    link={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/articulo/${item.id}`}
                   />
                 );
               } else if (
