@@ -116,7 +116,7 @@ export default function Escritura() {
                     key={item.id}
                     text={item.attributes.Titulo}
                     img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
-                    link={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/articulo/${item.id}`}
+                    link={`https://www.ludushouse.com/articulo/${item.id}`}
                   />
                 );
               } else if (
@@ -126,7 +126,7 @@ export default function Escritura() {
                     key={item.id}
                     text={item.attributes.Title}
                     img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
-                    link={`http://localhost:3000/articulo/${item.id}`}
+                    link={`https://www.ludushouse.com/articulo/${item.id}`}
                   />
                 );
               }
