@@ -74,12 +74,25 @@
   .Intro {
     font-size: 52px;
   }
+
+  .Intro_texts {
+    top: -100px;
+    h1 {
+      font-size: 3em;
+    }
+    p {
+      font-size: 0.5em;
+      align-items: flex-start;
+    }
+  }
 }
+
 @media (min-width: 1025px) {
   .Intro_texts {
     p {
       flex-direction: row;
-      gap: 0.5em;
+      gap: 0.4em;
+      font-size: 0.5em;
     }
   }
 
@@ -94,6 +107,7 @@
 
   .Intro_texts {
     top: -150px;
+    gap: 0.5em;
 
     h1{
       font-size: 3.5em;
@@ -103,4 +117,30 @@
       font-size: 0.5em;
     }
   }
+}
+
+@media (max-height: 780px){
+  .Intro_texts{
+    h1{
+      font-size: 2.5em;
+    }
+  }
+
+  .Intro_navigation{
+    font-size: 0.8em;
+  }
+}
+
+
+@media (max-height: 780px) and (min-width: 801px){
+  .Intro_texts{
+    top: -50px;
+    h1{
+      font-size: 4em;
+    }
+    p{
+      font-size: 0.5em;
+    }
+  }
+
 }
