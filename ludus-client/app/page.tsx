@@ -43,6 +43,10 @@ export default function Home() {
 
   useEffect(() => {
     const interval = setInterval(() => {
+      if (index === titles.length - 1) {
+        setIndex(0);
+        return;
+      }
       setIndex((prevIndex) => (prevIndex + 1) % titles.length);
     }, 3000); // Change every 3 seconds
 
