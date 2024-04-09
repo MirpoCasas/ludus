@@ -44,7 +44,7 @@ const {start} = useContext(AudioContext);
         <Image src={player} alt="cassete player"></Image>
       </motion.div>
       <motion.div className={styles.Player_text} variants={variantsPlayerText}>
-        <p>Clickeame!</p>
+        <p>Cliquéame!</p>
       </motion.div>
     </motion.div>
   );

@@ -72,7 +72,7 @@ export default function Home() {
             </p>
           </div>
           <div className={styles.Intro_navigation}>
-            <Link href="/quienes">.QUÍENES SOMOS</Link>
+            <Link href="/quienes">.QUIÉNES SOMOS</Link>
             <Link href="/quehacemos">.QUÉ HACEMOS</Link>
             <Link href="/contacto">.CONTACTO</Link>
           </div>

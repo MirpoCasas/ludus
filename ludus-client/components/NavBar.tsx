@@ -49,7 +49,7 @@ export function NavBar() {
       </div>
       <div className={styles.navBar_content}>
         <Link onClick={()=>setIsOpenNav(false)} href="/">HOGAR</Link>
-        <Link onClick={()=>setIsOpenNav(false)} href="/quienes">QUÍENES SOMOS</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/quienes">QUIÉNES SOMOS</Link>
         <Link onClick={()=>setIsOpenNav(false)} href="/quehacemos">QUÉ HACEMOS</Link>
         <Link onClick={()=>setIsOpenNav(false)} href="/contacto">CONTACTO</Link>
       </div>
