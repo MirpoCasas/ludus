@@ -85,7 +85,7 @@ function Articulo({ params }: { params: { id: string } }) {
   //fetch data
   useEffect(() => {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${params.id}?populate=* `, {
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/escrituras/${params.id}?populate=* `, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
