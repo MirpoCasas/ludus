@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { PageWrap } from "@/components/pageWrap";
 import BackButton from "@/components/backButton";
+import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer';
 
 const Azert = Azeret_Mono({ subsets: ["latin"], weight: ["400", "500"] });
 
@@ -15,7 +16,7 @@ const Title = Domine({ subsets: ["latin"], weight: ["400", "500", "600", "700"] 
 
 type articleData = {
   Title: string;
-  Post: string;
+  Publicacion: BlocksContent;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -134,7 +135,7 @@ function Articulo({ params }: { params: { id: string } }) {
                   })}
                 </div>
               </div>
-              <p className={`${Title.className} ${styles.texto_principal}`}>{articleData.Post}</p>
+              <p className={`${Title.className} ${styles.texto_principal}`}><BlocksRenderer content={articleData.Publicacion} /></p>
             </div>
           </>
         )}
