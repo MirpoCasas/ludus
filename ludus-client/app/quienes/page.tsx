@@ -112,7 +112,7 @@ export default function Quienes() {
     <PageWrap>
       <BackButton href="/"/>
       <div className={`${Azert.className} ${styles.quienes}`}>
-        <h1>Quíenes somos</h1>
+        <h1>Quiénes somos</h1>
         <div className={styles.quienes_grid}>
           <div className={styles.quienes_item}>
             <div className={styles.quienes_foto}>

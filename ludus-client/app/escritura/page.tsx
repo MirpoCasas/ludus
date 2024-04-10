@@ -21,6 +21,8 @@ const Azert = Azeret_Mono({
 
 type ItemEscrituraProps = {
   text: string;
+  date: string;
+  filters: object[];
   img: StaticImageData;
   link: string;
 };
@@ -40,10 +42,12 @@ function ItemEscritura(props: ItemEscrituraProps) {
       <div className={styles.escritura_item_contenido}>
         <h3>{props.text}</h3>
         <div className={styles.escritura_item_low}>
-          <p>11 Dic. 2015</p>
+          <p>{props.date}</p>
           <div className={styles.escritura_item_low_tags}>
-            <p>#TV</p>
-            <p>#Comedia</p>
+            {props.filters &&
+              props.filters.map((filter: any) => {
+                return <p key={filter.id}># {filter.attributes.Nombre}</p>;
+              })}
           </div>
         </div>
       </div>
@@ -115,16 +119,19 @@ export default function Escritura() {
                   <ItemEscritura
                     key={item.id}
                     text={item.attributes.Titulo}
+                    date={item.attributes.Fecha}
+                    filters={item.attributes.filtros.data}
                     img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
                     link={`https://www.ludushouse.com/articulo/${item.id}`}
-                  />
-                );
-              } else if (
-                item.attributes.filtros.data.some((obj: any) => activeFiltersArr.some((obj2: any) => obj2.id === obj.id))) {
-                return (
-                  <ItemEscritura
+                    />
+                  );
+                } else if (item.attributes.filtros.data.some((obj: any) => activeFiltersArr.some((obj2: any) => obj2.id === obj.id))) {
+                  return (
+                    <ItemEscritura
                     key={item.id}
-                    text={item.attributes.Title}
+                    text={item.attributes.Titulo}
+                    date={item.attributes.Fecha}
+                    filters={item.attributes.filtros.data}
                     img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
                     link={`https://www.ludushouse.com/articulo/${item.id}`}
                   />
