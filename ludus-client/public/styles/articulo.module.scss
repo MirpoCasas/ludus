@@ -46,6 +46,7 @@
   font-size: 16px;
   h1 {
     font-size: 2em;
+    margin: 0;
   }
 }
 
@@ -56,6 +57,19 @@
   p {
     background-color: grey;
     padding: 5px;
+  }
+}
+.subtitulo{
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+.texto_meta{
+  display: flex;
+  flex-direction: column;
+  p{
+    font-size: 0.8em;
+    margin: 0;
   }
 }
 
@@ -74,6 +88,10 @@
   background-color: rgba(128, 128, 128, 0.158);
   padding: 20px;
   line-height: 3em;
+
+  p{
+    margin: 0;
+  }
 }
 
 .imgHolder{

@@ -15,7 +15,7 @@ const Playfair = Crimson_Text({ subsets: ["latin"], weight: ["400", "600", "700"
 const Title = Domine({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 type articleData = {
-  Title: string;
+  Titulo: string;
   Publicacion: BlocksContent;
   createdAt: string;
   updatedAt: string;
@@ -27,6 +27,7 @@ type articleData = {
     Autor: string;
     Imagenes: string;
   };
+  Fecha: string
   Image?: {
     data: {
       id: number;
@@ -107,13 +108,13 @@ function Articulo({ params }: { params: { id: string } }) {
         {articleData && (
           <>
             <div className={styles.header}>
-              <h1 className={Title.className}>{articleData.Title}</h1>
+              <h1 className={Title.className}>{articleData.Titulo}</h1>
               {articleData.Image?.data && 
               <div className={styles.imgHolder}>
                 <Image className={styles.foto} loader={myLoader} alt={"image"} src={articleData.Image.data.attributes.url} layout="fill"></Image>
               </div>
               }
-              {articleData.Subtitulo && <p>Texto debajo del titulo</p>}
+              {articleData.Subtitulo && <p className={styles.subtitulo}>{articleData.Subtitulo}</p>}
             </div>
             <div className={styles.texto}>
               <div className={styles.texto_meta}>
