@@ -38,7 +38,8 @@
   height: fit-content;
   gap: 10px;
   box-sizing: border-box;
-  width: 300px;
+  width: 370px;
+  max-width: 90vw;
   background-color: rgba(151, 151, 151, 0.486);
   padding: 10px;
 }
@@ -49,6 +50,7 @@
   object-fit: cover;
   flex-shrink: 0;
   position: relative;
+  align-self: center;
 }
 
 .escritura_item_contenido {

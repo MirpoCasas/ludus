@@ -122,7 +122,7 @@ export default function Escritura() {
                     date={item.attributes.Fecha}
                     filters={item.attributes.filtros.data}
                     img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
-                    link={`https://www.ludushouse.com/articulo/${item.id}`}
+                    link={`/articulo/${item.id}`}
                     />
                   );
                 } else if (item.attributes.filtros.data.some((obj: any) => activeFiltersArr.some((obj2: any) => obj2.id === obj.id))) {
@@ -133,7 +133,7 @@ export default function Escritura() {
                     date={item.attributes.Fecha}
                     filters={item.attributes.filtros.data}
                     img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
-                    link={`https://www.ludushouse.com/articulo/${item.id}`}
+                    link={`/articulo/${item.id}`}
                   />
                 );
               }

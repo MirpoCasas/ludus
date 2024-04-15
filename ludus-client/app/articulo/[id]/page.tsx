@@ -8,7 +8,7 @@ import { PageWrap } from "@/components/pageWrap";
 import BackButton from "@/components/backButton";
 import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer';
 
-const Azert = Azeret_Mono({ subsets: ["latin"], weight: ["400", "500"] });
+const Azert = Azeret_Mono({ subsets: ["latin"], weight: ["300","400", "500"] });
 
 const Playfair = Crimson_Text({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
@@ -115,8 +115,6 @@ function Articulo({ params }: { params: { id: string } }) {
               </div>
               }
               {articleData.Subtitulo && <p className={styles.subtitulo}>{articleData.Subtitulo}</p>}
-            </div>
-            <div className={styles.texto}>
               <div className={styles.texto_meta}>
                 {articleData.Colaboradores &&
                   Object.entries(articleData.Colaboradores).map(([key, value]) => {
@@ -127,7 +125,7 @@ function Articulo({ params }: { params: { id: string } }) {
                     );
                   })}
                 <div className={styles.articulo_tags_holder}>
-                  {articleData.filtros.data.map((tag) => {
+                  {articleData.filtros?.data && articleData.filtros.data.map((tag) => {
                     return (
                       <div className={styles.articulo_tag} key={tag.id}>
                         #{tag.attributes.Nombre}
@@ -136,7 +134,9 @@ function Articulo({ params }: { params: { id: string } }) {
                   })}
                 </div>
               </div>
-              <p className={`${Title.className} ${styles.texto_principal}`}><BlocksRenderer content={articleData.Publicacion} /></p>
+            </div>
+            <div className={styles.texto}>
+              {articleData.Publicacion && <div className={`${Title.className} ${styles.texto_principal}`}><BlocksRenderer content={articleData.Publicacion}/></div>}
             </div>
           </>
         )}
