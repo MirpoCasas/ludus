@@ -2,12 +2,12 @@
 
 import styles from "@/public/styles/escritura.module.scss";
 import { Azeret_Mono } from "next/font/google";
-import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Filters from "@/components/filters";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { PageWrap } from "@/components/pageWrap";
 import BackButton from "@/components/backButton";
+import ItemEscritura  from "./ItemEscritura";
 
 type FilterItem = {
   id: number;
@@ -19,47 +19,12 @@ const Azert = Azeret_Mono({
   weight: ["400", "500", "600", "700"],
 });
 
-type ItemEscrituraProps = {
-  text: string;
-  date: string;
-  filters: object[];
-  img: StaticImageData;
-  link: string;
-};
-
-function ItemEscritura(props: ItemEscrituraProps) {
-  const myLoader = ({ src }: { src: string }) => {
-    return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${src}`;
-  };
-
-  return (
-    <motion.a href={props.link} className={styles.escritura_item} whileHover="active" initial="start">
-      {props.img && (
-        <div className={styles.escritura_item_imgHolder}>
-          <Image src={props.img} loader={myLoader} alt="Image" layout="fill"></Image>
-        </div>
-      )}
-      <div className={styles.escritura_item_contenido}>
-        <h3>{props.text}</h3>
-        <div className={styles.escritura_item_low}>
-          <p>{props.date}</p>
-          <div className={styles.escritura_item_low_tags}>
-            {props.filters &&
-              props.filters.map((filter: any) => {
-                return <p key={filter.id}># {filter.attributes.Nombre}</p>;
-              })}
-          </div>
-        </div>
-      </div>
-    </motion.a>
-  );
-}
-
 export default function Escritura() {
   const [items, setItems] = useState<any>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [activeFiltersArr, setActiveFiltersArr] = useState<FilterItem[]>([]);
   const [filtersArr, setFiltersArr] = useState<FilterItem[]>([]);
+  const ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -112,32 +77,39 @@ export default function Escritura() {
         <div className={styles.escritura_list}>
           {!loaded && <div className={styles.loader}></div>}
 
-          {loaded &&
-            items.map((item: any) => {
-              if (activeFiltersArr.length === 0) {
-                return (
-                  <ItemEscritura
-                    key={item.id}
-                    text={item.attributes.Titulo}
-                    date={item.attributes.Fecha}
-                    filters={item.attributes.filtros.data}
-                    img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
-                    link={`/articulo/${item.id}`}
-                    />
-                  );
-                } else if (item.attributes.filtros.data.some((obj: any) => activeFiltersArr.some((obj2: any) => obj2.id === obj.id))) {
+          {loaded && (
+            <AnimatePresence mode="popLayout">
+              {items.map((item: any, i: number) => {
+                if (activeFiltersArr.length === 0) {
                   return (
                     <ItemEscritura
-                    key={item.id}
-                    text={item.attributes.Titulo}
-                    date={item.attributes.Fecha}
-                    filters={item.attributes.filtros.data}
-                    img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
-                    link={`/articulo/${item.id}`}
-                  />
-                );
-              }
-            })}
+                      key={item.id}
+                      text={item.attributes.Titulo}
+                      date={item.attributes.Fecha}
+                      filters={item.attributes.filtros.data}
+                      img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
+                      link={`/articulo/${item.id}`}
+                      i={i}
+                      ref={ref}
+                      />
+                    );
+                  } else if (item.attributes.filtros.data.some((obj: any) => activeFiltersArr.some((obj2: any) => obj2.id === obj.id))) {
+                    return (
+                      <ItemEscritura
+                      key={item.id}
+                      ref={ref}
+                      text={item.attributes.Titulo}
+                      date={item.attributes.Fecha}
+                      filters={item.attributes.filtros.data}
+                      img={item.attributes.Image.data ? item.attributes.Image.data.attributes.url : null}
+                      link={`/articulo/${item.id}`}
+                      i={i}
+                    />
+                  );
+                }
+              })}
+            </AnimatePresence>
+          )}
         </div>
       </div>
     </PageWrap>
