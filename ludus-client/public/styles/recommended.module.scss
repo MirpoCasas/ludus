@@ -1,0 +1,83 @@
+.Recommended{
+    position: absolute;
+    bottom: 20px;
+    left: 200px;
+    width: 900px;
+    border: solid;
+    box-sizing: border-box;
+    h2{
+        margin: 0;
+    }
+}
+
+.Recommended_content{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+}
+
+.Recommended_holder{
+    display: flex;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.Recommended_topbar{
+    display: flex;
+    height: 30px;
+    border-bottom: solid;
+    justify-content: space-between;
+}
+
+.Recommended_topbar_deco{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    div{
+        height: 2px;
+        width: 95%;
+        background-color: black;
+    }
+}
+
+.Recommended_topbar_button{
+    height: 100%;
+
+    img{
+        height: 100%;
+        width: auto;
+    }
+}
+
+.Recommended_grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    position: relative;
+
+}
+
+.Recommended_navArrow{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Recommended_card{
+    height: 200px;
+    width: 300px;
+    border: solid;
+}

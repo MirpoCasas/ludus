@@ -70,9 +70,9 @@ export default function Trayectoria({params}: {params: {slug: string}}) {
       res.json().then((data) => {
         let autor : string
         if (params.slug === 'lucia') {
-          autor = 'Lucia Maldivo Franchi'
+          autor = 'Lucia'
         } else if (params.slug === 'francisco') {
-          autor = 'Francisco Marzioni'
+          autor = 'Francisco'
         }
         const filteredData = data.data.filter((item: Item) => item.attributes.Autor === 'Ambos' || item.attributes.Autor === autor);
         console.log(filteredData);

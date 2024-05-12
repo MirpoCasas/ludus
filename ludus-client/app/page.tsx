@@ -5,6 +5,7 @@ import styles from "./page.module.scss";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Recommended from "@/components/recommended";
 
 const titles = [
   "el oficio",
@@ -77,6 +78,7 @@ export default function Home() {
             <Link href="/contacto">.CONTACTO</Link>
           </div>
         </div>
+        <Recommended />
       </main>
     </PageWrap>
   );
