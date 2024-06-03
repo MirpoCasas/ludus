@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 import styles from "@/public/styles/contacto.module.scss";
 import { Azeret_Mono } from "next/font/google";
@@ -7,21 +9,74 @@ import Image from "next/image";
 import { PageWrap } from "@/components/pageWrap";
 import BackButton from "@/components/backButton";
 
+import { useForm, ValidationError } from '@formspree/react';
+
+function ContactForm() {
+  const [state, handleSubmit] = useForm("xvoejrdb");
+  if (state.succeeded) {
+      return <p>Gracias por comunicarte! Pronto nos pondremos en contacto!</p>;
+  }
+  return (
+    <form onSubmit={handleSubmit} className={`${Azert.className} ${styles.contacto_form}`}>
+      <input
+        id="nombre"
+        type="text" 
+        name="nombre"
+        placeholder="Nombre"
+      />
+      <ValidationError 
+        prefix="Nombre" 
+        field="nombre"
+        errors={state.errors}
+      />
+      <input
+        id="asunto"
+        type="text" 
+        name="asunto"
+        placeholder="Asunto"
+      />
+      <ValidationError 
+        prefix="Asunto" 
+        field="asunto"
+        errors={state.errors}
+      />
+      <input
+        id="email"
+        type="email" 
+        name="email"
+        placeholder="Email"
+      />
+      <ValidationError 
+        prefix="Email" 
+        field="email"
+        errors={state.errors}
+      />
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Mensaje"
+      />
+      <ValidationError 
+        prefix="Message" 
+        field="message"
+        errors={state.errors}
+      />
+      <button type="submit" disabled={state.submitting} className={Azert.className}>
+        Submit
+      </button>
+    </form>
+  );
+}
+
+
 export default function contacto() {
+  const [state, handleSubmit] = useForm("xvoejrdb");
   return (
     <PageWrap>
       <BackButton href="/"/>
       <div className={`${styles.contacto} ${Azert.className}`}>
         <h1>Contacto</h1>
-        <form action="" method="post" className={styles.contacto_form}>
-          <input type="text" name="nombre" id="nombre" placeholder="Nombre" />
-          <input type="text" name="asunto" id="asunto" placeholder="Asunto" />
-          <input type="email" name="email" id="email" placeholder="Email" />
-          <textarea name="mensaje" id="mensaje" placeholder="Mensaje"></textarea>
-          <button type="submit" className={Azert.className}>
-            Enviar
-          </button>
-        </form>
+        <ContactForm />
       </div>
     </PageWrap>
   );

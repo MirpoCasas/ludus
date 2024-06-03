@@ -34,7 +34,6 @@ const titles = [
 ];
 
 export default function Home() {
-
   const animationVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
@@ -64,7 +63,15 @@ export default function Home() {
               Despacho digital sobre
               <span className={styles.title_texts}>
                 <AnimatePresence mode="wait">
-                  <motion.span key={titles[index]} className={styles.title_texts_item} variants={animationVariants} initial="hidden" animate="visible" exit="exit" transition={{ duration: 1 }}>
+                  <motion.span
+                    key={titles[index]}
+                    className={styles.title_texts_item}
+                    variants={animationVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    transition={{ duration: 1 }}
+                  >
                     {titles[index]}
                   </motion.span>
                 </AnimatePresence>
@@ -77,8 +84,8 @@ export default function Home() {
             <Link href="/quehacemos">.QUÉ HACEMOS</Link>
             <Link href="/contacto">.CONTACTO</Link>
           </div>
-        </div>
         <Recommended />
+        </div>
       </main>
     </PageWrap>
   );

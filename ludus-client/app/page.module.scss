@@ -6,6 +6,13 @@
   padding: 20px;
   box-sizing: border-box;
   font-size: 32px;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.main{
+  max-height: 100vh;
+  overflow-y: hidden;
 }
 
 .Intro_texts {
