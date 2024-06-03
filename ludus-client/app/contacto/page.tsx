@@ -69,7 +69,7 @@ function ContactForm() {
 }
 
 
-export default function contacto() {
+export default function Contacto() {
   const [state, handleSubmit] = useForm("xvoejrdb");
   return (
     <PageWrap>

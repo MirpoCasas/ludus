@@ -51,7 +51,7 @@ export default function Home() {
     }, 3000); // Change every 3 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  });
 
   return (
     <PageWrap>
