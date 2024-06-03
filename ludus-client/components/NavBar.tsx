@@ -48,7 +48,7 @@ export function NavBar() {
         <Image src={menuIcon} alt="menu" className={styles.menuIcon} onClick={() => setIsOpenNav(!isOpenNav)}></Image>
       </div>
       <div className={styles.navBar_content}>
-        <Link onClick={()=>setIsOpenNav(false)} href="/">HOGAR</Link>
+        <Link onClick={()=>setIsOpenNav(false)} href="/">HOME</Link>
         <Link onClick={()=>setIsOpenNav(false)} href="/quienes">QUIÉNES SOMOS</Link>
         <Link onClick={()=>setIsOpenNav(false)} href="/quehacemos">QUÉ HACEMOS</Link>
         <Link onClick={()=>setIsOpenNav(false)} href="/contacto">CONTACTO</Link>

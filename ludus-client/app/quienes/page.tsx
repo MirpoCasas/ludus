@@ -122,6 +122,7 @@ export default function Quienes() {
             </div>
             <div className={styles.quienes_item_contenido}>
               <h2>Francisco Marzioni</h2>
+              <h3>(Argentina, 1979)</h3>
               <p>
                 {descFrancisco ? descFrancisco.Texto : "Cargando..."}
               </p>
@@ -138,7 +139,8 @@ export default function Quienes() {
               }
             </div>
             <div className={styles.quienes_item_contenido}>
-              <h2>Lucia Maldivo Franchi</h2>
+              <h2>Lucía Malvido Franchi</h2>
+              <h3>(Ciudad de México, 1985)</h3>
               <p>
                 {descLucia ? descLucia.Texto : "Cargando..."}
               </p>
