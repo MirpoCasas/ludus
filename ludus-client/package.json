@@ -13,7 +13,7 @@
     "@strapi/blocks-react-renderer": "^1.0.1",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.4",
-    "next": "^14.2.3",
+    "next": "^15.5.10",
     "qs": "^6.11.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
